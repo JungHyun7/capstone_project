@@ -35,7 +35,6 @@
 
 ## 🛠 System Architecture
 ![System Architecture](./시스템%20구성도.drawio.png)
-*이미지 파일명이 '시스템 구성도.drawio.png'인 경우 위와 같이 표시됩니다.*
 
 1.  **Input**: 클라이언트 카메라 스트리밍 또는 이미지 파일 업로드
 2.  **Inference**: WebSocket(SocketIO)을 통해 서버로 전송된 데이터를 YOLOv11로 분석
