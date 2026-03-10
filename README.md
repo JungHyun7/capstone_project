@@ -17,7 +17,7 @@
 
 ## 📊 Dataset Information
 모델 학습 및 검증을 위해 **AI Hub**에서 제공하는 정식 데이터를 활용하였습니다.
-* **데이터셋 명칭**: [도시철도 선로 시설물 영상 데이터](https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=71373)
+* **데이터셋 명칭**: [철도 선로 상태 인식 데이터](https://www.aihub.or.kr/aihubdata/data/view.do?pageIndex=1&currMenu=115&topMenu=100&srchOptnCnd=OPTNCND001&searchKeyword=%EC%B2%A0%EB%8F%84+%EC%84%A0%EB%A1%9C&srchDetailCnd=DETAILCND001&srchOrder=ORDER001&srchPagePer=20&aihubDataSe=data&dataSetSn=71391)
 * **데이터 규모**: 총 61,622장의 영상 데이터 (약 21.79GB)
 * **데이터 특징**: 레일, 침목, 체결구 등 철도 핵심 시설물의 정상 및 결함(파손, 이탈, 균열) 상태 포함
 
