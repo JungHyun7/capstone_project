@@ -40,7 +40,7 @@
 └── templates/
     └── index.html        # 메인 모니터링 및 실시간 탐지 페이지
 
-```text
+` ``` `
 
 ## ✨ 4. Key Features
 
@@ -104,6 +104,8 @@
 FLASK_SECRET_KEY=your_secret_key
 FLASK_PORT=8000
 DATABASE_NAME=railway_anomalies.db
+
+` ``` `
 
 ### 2. 설치 및 실행
 ```bash
