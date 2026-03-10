@@ -1,1 +1,53 @@
-🚂 실시간 철도 이상 감지 시스템 (Railway Anomaly Detection)YOLOv11 기반의 실시간 객체 탐지 기술을 활용한 예방 중심 철도 안전 관리 솔루션🌟 프로젝트 소개본 프로젝트는 철도 운행 중 발생할 수 있는 선로 및 구조물 손상으로 인한 탈선 사고를 사전에 예방하기 위해 개발되었습니다. 기존의 '사고 현황 데이터'가 가진 높은 결측치 문제를 식별하고, 실시간 모니터링이 가능한 이미지 기반 이상 감지 시스템으로 방향을 전환하여 기술적 실용성을 확보했습니다. 🚀 주요 기능실시간 스트리밍 분석: 웹 브라우저를 통해 1초 주기로 프레임을 캡처하여 서버로 전송, 약 30 FPS의 속도로 실시간 감지를 수행합니다. 이상 판별 및 시각화: YOLOv11 모델이 구조물의 결함을 탐지하면 이상 객체는 빨간색, 정상은 초록색 바운딩 박스로 구분하여 즉시 알림을 제공합니다. 자동 이력 관리: 감지된 이상 징후는 발생 시간, 부품명, 신뢰도, 이미지 데이터와 함께 SQLite DB에 영구 저장됩니다. 통계 대시보드: 최근 7일간의 데이터를 기반으로 구조물별/시간대별 이상 감지 현황을 Chart.js로 시각화합니다. 모바일 최적화: 반응형 웹 및 모바일 카메라 연동을 지원하여 현장 유지보수 직원의 휴대용 디바이스에서도 동일하게 작동합니다. 🛠 시스템 아키텍처이미지 입력부터 결과 시각화까지의 전체 프로세스는 다음과 같은 흐름으로 처리됩니다. Client: 사용자 디바이스(노트북, 휴대폰 카메라)를 통한 데이터 수집 및 업로드 Backend: Flask 메인 서버 및 SocketIO 기반 실시간 통신 AI Model: YOLOv11 기반 철도 구조물 이상 감지 수행 Database: SQLite를 활용한 이상 감지 로그 및 통계 데이터 관리 📊 AI 모델 성능AI HUB에서 제공하는 61,622개의 고품질 철도 영상 데이터셋을 활용하여 학습을 진행했습니다. 탐지 대상: 레일, 침목, 용접부, 볼트-너트 등 11가지 핵심 시설물 평가 지표:mAP@50: 93% 달성 (베이스라인 80% 대비 우수) 재현율(Recall): 90% 달성 처리 속도: 로컬 GPU 환경 기준 약 30 FPS 📂 데이터베이스 스키마이상 감지 이력 관리를 위해 설계된 anomalies 테이블 구조입니다. ColumnTypeDescriptionidINTEGER기본키 (PK), 자동 증가timestampTEXT이상 감지 발생 시각component_korTEXT사용자 표시용 한글 구조물명confidenceREAL감지 신뢰도 (0.0 ~ 1.0)bboxTEXT바운딩 박스 좌표 정보image_dataTEXTBase64 인코딩된 감지 시점 이미지👥 팀 정보 (DataMorph)김도현 (팀장): 학습 데이터 전처리 및 모델 성능 향상 조중현: 웹 UI 디자인 및 프론트엔드 제작 김채린: 웹 UI/UX 개선 및 기능 최종 완성 이형민: 프로젝트 기획 보조 및 발표 💡 시니어의 한마디"보고서에 언급된 **'기존 데이터의 결측치 문제로 인한 프로젝트 방향 전환'**은 개발자로서의 판단력과 유연성을 보여주는 아주 훌륭한 스토리입니다.  이 내용을 README의 Project Overview에 명시했으니, 면접 시 이 부분을 자신 있게 설명해 보세요!"이제 GitHub에 접속하여 이 내용을 README.md에 적용하시면 됩니다. 혹시 추가로 더 강조하고 싶은 프로젝트의 성과나 수정 사항이 있으신가요?
+# 🚂 실시간 철도 이상 감지 및 시설물 관리 시스템 
+> **AI 기반의 실시간 객체 탐지(YOLOv11)를 활용한 예방 중심 철도 안전 관리 솔루션**
+
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-3.1.0-000000?style=flat-square&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![YOLOv11](https://img.shields.io/badge/YOLOv11-Ultralytics-00FF00?style=flat-square)](https://github.com/ultralytics/ultralytics)
+[![SQLite](https://img.shields.io/badge/SQLite-3-003B57?style=flat-square&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+
+## 📌 Project Overview
+[cite_start]본 프로젝트는 철도 운행 중 발생할 수 있는 선로 및 구조물 손상으로 인한 탈선 사고를 사전에 예방하고자 개발되었습니다[cite: 6]. [cite_start]기존의 사후 보고용 데이터가 가진 한계를 극복하고, **YOLOv11 기반 객체 탐지 기술**을 활용하여 레일, 침목, 용접부 등 주요 구조물의 이상 상태를 실시간으로 판별합니다[cite: 7].
+
+## 💡 Engineering Insight: Problem Solving (Pivot)
+데이터 분석을 통해 프로젝트의 방향을 실용적으로 전환한 경험은 본 프로젝트의 핵심 역량입니다.
+
+* [cite_start]**문제 식별**: 초기 기획했던 '철도 사고 예측 모델'은 공공데이터의 **결측치 비율이 90%를 상회(강우량 97%, 가시거리 99% 등)**하여 AI 학습에 부적합함을 확인했습니다[cite: 13, 14].
+* [cite_start]**해결책**: 데이터 품질 문제를 해결하기 위해 **AI HUB의 고품질 영상 데이터셋(61,622장)**으로 소스를 변경하고, '사고 예측'에서 **'실시간 이상 감지'**로 목표를 재정의하여 기술적 완성도를 높였습니다[cite: 16, 21, 22].
+
+## ✨ Key Features
+* [cite_start]**Real-time Detection**: Flask-SocketIO를 활용하여 초당 **30 FPS**의 속도로 실시간 영상 분석 결과를 전송합니다[cite: 61, 62].
+* [cite_start]**Intelligent Analysis**: YOLOv11 모델을 통해 레일, 침목, 체결구 등 11종의 시설물의 정상/결함 상태를 동시 판별합니다[cite: 42, 55, 56].
+* [cite_start]**Automatic Logging**: 이상 징후 감지 시 시간, 부품명, 신뢰도 및 해당 시점의 이미지를 **SQLite DB**에 자동 저장합니다[cite: 43, 54].
+* [cite_start]**Interactive Dashboard**: **Chart.js**를 활용하여 구조물별 결함 빈도 및 시간대별 발생 추이를 대시보드로 시각화합니다[cite: 45, 46].
+* [cite_start]**Mobile Readiness**: 모바일 브라우저에서도 카메라 연동 및 분석 기능을 동일하게 지원하여 현장 활용성을 극대화했습니다[cite: 81, 85].
+
+## 🛠 Tech Stack
+* [cite_start]**AI/ML**: Python, Ultralytics YOLOv11, OpenCV, PyTorch [cite: 36]
+* [cite_start]**Backend**: Flask, Flask-SocketIO, SQLite3 [cite: 36, 53]
+* [cite_start]**Frontend**: HTML5, CSS3, JavaScript (Chart.js, Socket.io) [cite: 82, 86]
+* [cite_start]**Environment**: Google Colab Pro (Training), VS Code (Development) [cite: 92]
+
+## 📊 Model Performance
+[cite_start]AI HUB의 실제 도시철도 데이터를 사용하여 실제 현장 적용 가능성을 검증했습니다[cite: 35, 64].
+* [cite_start]**mAP@50**: **93%** (데이터셋 베이스라인 80% 대비 우수한 정확도 확보) [cite: 62, 64]
+* [cite_start]**Recall (재현율)**: **90%** 달성 [cite: 64]
+* [cite_start]**Processing Speed**: 로컬 GPU 환경 기준 실시간성(30 FPS) 확보 [cite: 61, 62]
+
+## 📂 System Architecture
+[cite_start]시스템은 이미지 수집부터 데이터 시각화까지 유기적으로 연결되어 실시간으로 동작합니다[cite: 57].
+
+1.  [cite_start]**Input**: 사용자가 카메라 시작 또는 이미지 업로드를 통해 데이터 입력[cite: 39, 40].
+2.  [cite_start]**Inference**: 서버의 YOLOv11 모델이 실시간 객체 탐지 및 이상 여부 판별[cite: 42, 58].
+3.  [cite_start]**Storage**: 이상 탐지 시 관련 정보를 DB에 기록하고 로그 생성[cite: 43, 59].
+4.  [cite_start]**Output**: 감지 결과를 바운딩 박스로 시각화하여 클라이언트에 전송 및 통계 업데이트[cite: 44, 45, 74].
+
+## 🚀 Getting Started
+
+### 1. 환경 설정 (.env)
+보안을 위해 환경 변수 파일을 생성합니다.
+```text
+FLASK_SECRET_KEY=your_secret_key
+FLASK_PORT=8000
+DATABASE_NAME=railway_anomalies.db
+
