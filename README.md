@@ -21,7 +21,7 @@
 ## 📂 3. Directory Structure
 저장소의 주요 파일 구조와 역할은 다음과 같습니다.
 
-```text
+
 .
 ├── app.py              # Flask 서버 메인 (SocketIO 통신 및 라우팅)
 ├── database.py         # SQLite DB 관리 (감지 이력 CRUD 로직)
@@ -98,7 +98,7 @@
 ## 🚀 11. Getting Started
 
 ### 1. 환경 설정 (.env)
-```text
+
 FLASK_SECRET_KEY=your_secret_key
 FLASK_PORT=8000
 DATABASE_NAME=railway_anomalies.db
@@ -162,13 +162,13 @@ DATABASE_NAME=railway_anomalies.db
 ## 🚀 11. Getting Started
 
 ### 1. 환경 설정 (.env)
-```text
+
 FLASK_SECRET_KEY=your_secret_key
 FLASK_PORT=8000
 DATABASE_NAME=railway_anomalies.db
 
 ### 2. 설치 및 실행
-```bash
+
 # 의존성 패키지 설치
 pip install -r requirements.txt
 
