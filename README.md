@@ -40,69 +40,7 @@
 └── templates/
     └── index.html        # 메인 모니터링 및 실시간 탐지 페이지
 
-## ✨ 4. Key Features
-
-* **Real-time Video Inference**: Flask-SocketIO를 활용하여 초당 약 **30 FPS**의 저지연(Low-latency) 분석 환경을 구현했습니다.
-* **Intelligent Anomaly Detection**: YOLOv11 모델이 시설물 결함을 탐지하며, 이상 발견 시 즉시 화면에 빨간색 바운딩 박스를 표시합니다.
-* **Automated Incident Logging**: 이상 탐지 시 시간, 부품명, 신뢰도, 이미지 데이터를 **SQLite DB**에 자동 저장하여 이력 관리를 자동화합니다.
-* **Interactive Dashboard**: **Chart.js**를 활용하여 부품별 결함 빈도 및 시간대별 발생 추이를 대시보드로 시각화합니다.
-* **Cross-Platform Support**: 반응형 웹 설계로 PC뿐만 아니라 모바일 기기에서도 실시간 점검이 가능합니다.
-
-## 🔍 5. Detection Classes (11 Classes)
-시스템은 다음 11가지 핵심 시설물을 정밀 탐지하며 각 부품의 정상/이상 유무를 판별합니다.
-
-| ID | 부품명 (ENG) | 한글명 | 탐지 내용 |
-| :-- | :--- | :--- | :--- |
-| 1 | rail | 레일 | 레일 표면 파손 및 균열 |
-| 2 | lubricator | 도유기 | 윤활 장치 설치 상태 |
-| 3 | weld_zone | 용접부 | 레일 연결 부위 파손 |
-| 4 | fishplate | 분기부 이음매판 | 분기점 연결판 고정 상태 |
-| 5 | bolt-nut | 볼트-너트 | 부품 체결 및 누락 여부 |
-| 6 | pandrol_e-clip | 팬드롤 e-clip | 레일 고정 클립 이탈 |
-| 7 | insulation-block| 절연블록 | 전기 절연체 파손 |
-| 8 | screw_spike | 나사스파이크 | 레일 고정 나사 고정 상태 |
-| 9 | guardrail bolt | 가드레일 볼트 | 가드레일 체결 상태 |
-| 10 | hex_bolt | 육각볼트 | 구조물 고정 상태 |
-| 11 | tie | 침목 | 침목 균열 및 노후도 |
-
-## 🛠 6. Technical Stack
-* **AI Model**: Ultralytics YOLOv11
-* **Framework**: Python, Flask, Flask-SocketIO
-* **Database**: SQLite3
-* **Frontend**: JavaScript (Chart.js, Socket.io), HTML5, CSS3
-
-## 📊 7. Model Performance
-학습 결과, 산업 현장 적용이 가능한 수준의 높은 성능을 기록했습니다.
-* **정확도 (mAP@50)**: **93.0%**
-* **재현율 (Recall)**: **90.0%**
-* **처리 속도**: **30 FPS** (목표치 24 FPS 초과 달성)
-
-## 📂 8. System Architecture
-
-![System Architecture](./시스템%20구성도.drawio.png)
-1. **Client**: 카메라 피드 및 이미지 업로드를 통한 데이터 입력.
-2. **Server**: SocketIO를 통한 실시간 통신 및 YOLOv11 추론 수행.
-3. **Database**: 이상 탐지 이력 및 이미지 데이터 영구 저장.
-
-## ⚠️ 9. Troubleshooting (기술적 한계 극복)
-* **하드웨어 자원 제한**: 21.79GB의 대용량 데이터 학습 시 GPU 메모리 부족 문제 발생.
-  - **해결**: 배치 크기(Batch Size) 최적화 및 데이터 분할 처리 기법을 적용하여 학습 안정화 성공.
-* **현실적 제약 극복**: 초기 기획한 소형 이동체 도입이 예산 문제로 어려워짐.
-  - **해결**: 접근성이 뛰어난 모바일 기기 기반의 시스템으로 유연하게 전환하여 실무 활용성을 극대화했습니다.
-
-## 🔮 10. Future Roadmap
-* **위치 기반 서비스**: GPS 연동을 통한 실시간 결함 발생 위치 지도 표시 기능 및 장치 위치 디스플레이 보완.
-* **모델 범용성 확장**: 고속철도 및 다양한 기후 환경 데이터 추가 학습을 통한 모델 고도화.
-* **원격 협업 시스템**: 실시간 현장 영상을 활용한 관리자-현장 인원 간의 원격 지원 시스템 연동.
-
-## 🚀 11. Getting Started
-
-### 1. 환경 설정 (.env)
-
-FLASK_SECRET_KEY=your_secret_key
-FLASK_PORT=8000
-DATABASE_NAME=railway_anomalies.db
-
+```text
 
 ## ✨ 4. Key Features
 
