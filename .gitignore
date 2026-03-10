@@ -1,0 +1,18 @@
+# Python 관련
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# IDE 관련 (PyCharm 설정 파일들 차단)
+.idea/
+*.iml
+
+# 데이터 및 모델 (보안 및 용량 이슈)
+*.db
+*.pt
+
+# OS 파일
+.DS_Store
+

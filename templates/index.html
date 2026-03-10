@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>철도 이상 감지 시스템</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>실시간 철도 이상 감지 시스템</h1>
+        </header>
+
+        <div class="main-content">
+            <div class="camera-container">
+                <h2>카메라 뷰</h2>
+                <div class="video-container">
+                    <video id="video" autoplay playsinline></video>
+                    <canvas id="canvas" class="d-none"></canvas>
+                </div>
+                <div class="camera-controls">
+                    <button id="startBtn">카메라 시작</button>
+                    <button id="stopBtn" disabled>카메라 중지</button>
+                    <select id="cameraSelect">
+                        <option value="">카메라 선택</option>
+                    </select>
+                    <div id="connectionStatus" class="status-indicator">연결 대기 중...</div>
+                </div>
+
+                <!-- 이미지 업로드 폼 추가 -->
+                <div class="upload-container">
+                    <h3>이미지 업로드</h3>
+                    <form id="uploadForm">
+                        <input type="file" id="fileInput" accept="image/*" capture>
+                        <button type="submit">분석하기</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="detection-container">
+                <h2>이상 감지 결과</h2>
+                <div class="result-view">
+                    <canvas id="resultCanvas"></canvas>
+                </div>
+                <div class="detection-info">
+                    <div class="info-item">
+                        <span>처리 시간:</span>
+                        <span id="processTime">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span>탐지 시간:</span>
+                        <span id="timestamp">-</span>
+                    </div>
+                </div>
+                <div class="anomaly-list">
+                    <h3>감지된 이상 목록</h3>
+                    <div id="anomalyList"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+            <h2>이상 감지 대시보드</h2>
+            <div class="chart-container">
+                <div class="chart">
+                    <h3>구조물별 이상 감지 현황</h3>
+                    <canvas id="componentChart"></canvas>
+                </div>
+                <div class="chart">
+                    <h3>시간대별 이상 감지 현황</h3>
+                    <canvas id="timeChart"></canvas>
+                </div>
+            </div>
+            <div class="history-container">
+                <h3>최근 이상 감지 기록</h3>
+                <div id="historyList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 공유 소켓 객체 생성 -->
+    <script>
+        const socket = io.connect(window.location.origin);
+
+        socket.on('connect', function() {
+            console.log('Connected to server');
+        });
+
+        socket.on('disconnect', function() {
+            console.log('Disconnected from server');
+        });
+    </script>
+    <script src="{{ url_for('static', filename='js/camera.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

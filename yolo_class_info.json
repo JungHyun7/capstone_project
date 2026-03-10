@@ -1,0 +1,112 @@
+{
+    "0": {
+        "name": "rail_normal",
+        "name_kor": "레일_정상",
+        "original_id": 1
+    },
+    "1": {
+        "name": "rail_abnormal",
+        "name_kor": "레일_이상",
+        "original_id": 1
+    },
+    "2": {
+        "name": "lubricator_normal",
+        "name_kor": "도유기_정상",
+        "original_id": 2
+    },
+    "3": {
+        "name": "lubricator_abnormal",
+        "name_kor": "도유기_이상",
+        "original_id": 2
+    },
+    "4": {
+        "name": "weld_zone_normal",
+        "name_kor": "용접부_정상",
+        "original_id": 3
+    },
+    "5": {
+        "name": "weld_zone_abnormal",
+        "name_kor": "용접부_이상",
+        "original_id": 3
+    },
+    "6": {
+        "name": "fishplate_normal",
+        "name_kor": "분기부 이음매판_정상",
+        "original_id": 4
+    },
+    "7": {
+        "name": "fishplate_abnormal",
+        "name_kor": "분기부 이음매판_이상",
+        "original_id": 4
+    },
+    "8": {
+        "name": "bolt-nut_normal",
+        "name_kor": "볼트ㆍ너트_정상",
+        "original_id": 5
+    },
+    "9": {
+        "name": "bolt-nut_abnormal",
+        "name_kor": "볼트ㆍ너트_이상",
+        "original_id": 5
+    },
+    "10": {
+        "name": "pandrol_e-clip_normal",
+        "name_kor": "팬드롤 e-clip_정상",
+        "original_id": 6
+    },
+    "11": {
+        "name": "pandrol_e-clip_abnormal",
+        "name_kor": "팬드롤 e-clip_이상",
+        "original_id": 6
+    },
+    "12": {
+        "name": "Insulation_block_normal",
+        "name_kor": "절연블록_정상",
+        "original_id": 7
+    },
+    "13": {
+        "name": "Insulation_block_abnormal",
+        "name_kor": "절연블록_이상",
+        "original_id": 7
+    },
+    "14": {
+        "name": "screw_spike_normal",
+        "name_kor": "나사스파이크_정상",
+        "original_id": 8
+    },
+    "15": {
+        "name": "screw_spike_abnormal",
+        "name_kor": "나사스파이크_이상",
+        "original_id": 8
+    },
+    "16": {
+        "name": "guardrail bolt-nut_normal",
+        "name_kor": "가드레일 볼트ㆍ너트 _정상",
+        "original_id": 9
+    },
+    "17": {
+        "name": "guardrail bolt-nut_abnormal",
+        "name_kor": "가드레일 볼트ㆍ너트 _이상",
+        "original_id": 9
+    },
+    "18": {
+        "name": "hex_bolt_normal",
+        "name_kor": "육각볼트_정상",
+        "original_id": 10
+    },
+    "19": {
+        "name": "hex_bolt_abnormal",
+        "name_kor": "육각볼트_이상",
+        "original_id": 10
+    },
+    "20": {
+        "name": "tie_normal",
+        "name_kor": "침목_정상",
+        "original_id": 11
+    },
+    "21": {
+        "name": "tie_abnormal",
+        "name_kor": "침목_이상",
+        "original_id": 11
+    }
+}
